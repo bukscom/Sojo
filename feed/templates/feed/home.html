@@ -1,0 +1,43 @@
+{% extends "feed/layout.html" %}
+<!--{% load static %}-->
+
+
+{% block searchform %}
+
+
+
+
+<form
+  class="form-inline my-2 my-lg-0 ml-5"
+  action="{% url 'search_posts' %}"
+  method="get"
+>
+  <input name="p" type="text" placeholder="Search posts.." />
+  <button class="btn btn-secondary my-2 my-sm-0 ml-4" type="submit">
+    Search
+  </button>
+</form>
+{% endblock searchform %}
+
+
+ {% block hero %}
+
+    <!-- Jumbotron -->
+    <div  class="bg-image img-fluid d-flex justify-content-center align-items-center "
+            style="background-image: url({% static 'feed/bgmain1.jpg' %}); height: 90vh">
+
+
+        <p >
+         {% if user.is_authenticated %}
+            <a href="{% url 'my_profile' %}" class="btn btn-outline-light"  type="submit">Profile</a>
+           
+            <a href="{% url 'logout' %}" class="btn btn-outline-light"  type="submit">Logout</a>
+        {% else %}
+            <a href="{% url 'register' %}" class="btn btn-outline-light"  type="submit">Sign Up</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-light"  type="submit">Login</a>
+        {% endif %}
+
+        </p>
+    </div>
+{% endblock hero %}
+
